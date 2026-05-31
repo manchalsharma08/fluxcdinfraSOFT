@@ -47,7 +47,7 @@ Check cluster: kubectl cluster-info --context kind-demo-cluster
 @@@@@### Configure GitOps Repository (Optional) >> Create GitHub repository.
 Then bootstrap Flux with GitHub:
 
-export GITHUB_TOKEN=<Token>
+# export GITHUB_TOKEN=<>
 export GITHUB_USER=manchalsharma08
 
 flux bootstrap github \
