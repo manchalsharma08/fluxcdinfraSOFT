@@ -1,0 +1,58 @@
+# K8S cluster create Done 
+
+-----------------------------------------------------------------------------
+
+## KIND CLI Install (PowerShell mein)
+  PowerShell as Administrator
+
+  curl.exe -Lo kind-windows-amd64.exe https://kind.sigs.k8s.io/dl/v0.31.0/kind-windows-amd64
+
+## kind.exe ko Path mein add karo (Recommended):
+  Move-Item .\kind-windows-amd64.exe C:\Windows\System32\kind.exe
+ Installation Verify : kind version
+
+## kubectl Setup (Agar nahi hai to)
+curl.exe -LO "https://dl.k8s.io/release/v1.31.0/bin/windows/amd64/kubectl.exe"
+Move-Item .\kubectl.exe C:\Windows\System32\kubectl.exe
+
+-----------------------------------------------------------------------------
+
+### Flux CLI instal
+🔗 Official Download Link:
+https://github.com/fluxcd/flux2/releases/latest
+
+Latest release mein neeche scroll karo aur yeh file download karo:
+
+flux_2.x.x_windows_amd64.zip
+
+Download hone ke baad file ko Extract karo (Right click → Extract All)
+Extract folder mein flux.exe file milegi.
+Isko copy karke C:\Windows\System32 folder mein paste kar do.
+
+Installation Verify: flux --version
+
+Verify Kubernetes Cluster for Flux: flux check --pre
+
+Install Flux into KIND Cluster: flux install   >>> Verify : flux check
+
+
+
+#### Local Kubernetes Cluster Create Karo
+kind create cluster --name demo-cluster
+kubectl get nodes
+
+Check cluster: kubectl cluster-info --context kind-demo-cluster
+
+
+@@@@@### Configure GitOps Repository (Optional) >> Create GitHub repository.
+Then bootstrap Flux with GitHub:
+
+export GITHUB_TOKEN=<Token>
+export GITHUB_USER=manchalsharma08
+
+flux bootstrap github \
+  --owner=$GITHUB_USER \
+  --repository=fluxcdinfraSOFT \
+  --branch=main \
+  --path=deployinfra \
+  --personal
