@@ -53,7 +53,7 @@ Then bootstrap Flux with GitHub:
 export GITHUB_USER=manchalsharma08
 
 flux bootstrap github \
-  --owner=$GITHUB_USER \
+  --owner=manchalsharma08 \
   --repository=fluxcdinfraSOFT \
   --branch=main \
   --path=deployinfra \
