@@ -1,5 +1,7 @@
 # K8S cluster create Done 
+az aks create --resource-group myAKS-RG --name myAKSCluster --node-count 2 --node-vm-size Standard_D2s_v5 --enable-addons monitoring --generate-ssh-keys
 
+az aks get-credentials --resource-group myAKS-RG --name myAKSCluster --overwrite-existing
 -----------------------------------------------------------------------------
 
 ## KIND CLI Install (PowerShell mein)
@@ -56,3 +58,9 @@ flux bootstrap github \
   --branch=main \
   --path=deployinfra \
   --personal
+
+  "# Help dekhne ke liye
+flux --help
+
+# Bootstrap command example
+flux bootstrap github --owner=yourusername --repository=yourrepo --branch=main --path=clusters/mycluster --personal"
